@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roblox Launcher+ — скачать лаунчер для Roblox</title>
+<meta name="description" content="Бесплатный лаунчер для Roblox на Windows: несколько аккаунтов, моды и темы, FastFlags, больше FPS и статистика игры.">
+<style>
+  :root {
+    --bg: #0E0F12; --panel: #17191D; --card: #1D2025; --line: #2A2D33;
+    --text: #F4F5F7; --muted: #9CA0A8; --accent: #FF7A5C; --accent-2: #FF9A7F; --ok: #3FC16A;
+    --r: 18px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 "Segoe UI Variable", "Segoe UI", system-ui, Roboto, Arial, sans-serif; }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+  /* шапка */
+  header { position: sticky; top: 0; z-index: 10; background: rgba(14,15,18,.82); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  header .wrap { display: flex; align-items: center; gap: 24px; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; text-decoration: none; font-size: 17px; }
+  .logo { width: 32px; height: 32px; border-radius: 10px; background: var(--accent); display: grid; place-items: center; font-weight: 800; color: #fff; font-size: 20px; line-height: 1; }
+  nav { margin-left: auto; display: flex; gap: 22px; }
+  nav a { text-decoration: none; color: var(--muted); font-size: 15px; }
+  nav a:hover { color: var(--text); }
+
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 14px; font-weight: 600; text-decoration: none; border: 1px solid transparent; transition: transform .15s, background .15s; }
+  .btn:active { transform: scale(.98); }
+  .btn-main { background: var(--accent); color: #fff; font-size: 17px; }
+  .btn-main:hover { background: var(--accent-2); }
+  .btn-ghost { background: var(--card); border-color: var(--line); }
+  .btn-ghost:hover { background: #24272D; }
+
+  /* первый экран */
+  .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; padding: 72px 0 64px; }
+  .tag { display: inline-block; padding: 6px 12px; border-radius: 999px; background: #2B2216; color: #FFB86B; font-size: 13px; margin-bottom: 18px; }
+  h1 { font-size: clamp(38px, 5.2vw, 58px); line-height: 1.05; margin: 0 0 18px; letter-spacing: -.02em; }
+  h1 span { color: var(--accent); }
+  .lead { color: var(--muted); font-size: 18px; margin: 0 0 30px; max-width: 520px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .meta { margin-top: 14px; color: var(--muted); font-size: 14px; }
+
+  /* картинка лаунчера, нарисованная вёрсткой */
+  .mock { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 14px; box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+  .mock-top { display: flex; align-items: center; gap: 8px; padding: 2px 4px 12px; font-weight: 600; font-size: 14px; }
+  .mock-top .logo { width: 22px; height: 22px; border-radius: 7px; font-size: 14px; }
+  .mock-body { display: grid; grid-template-columns: 112px 1fr; gap: 10px; }
+  .side { display: flex; flex-direction: column; gap: 4px; }
+  .side div { padding: 8px 10px; border-radius: 10px; font-size: 12.5px; color: var(--muted); }
+  .side .on { background: #262930; color: var(--text); box-shadow: inset 3px 0 0 var(--accent); }
+  .pane { background: #1B1D22; border: 1px solid var(--line); border-radius: 16px; padding: 12px; display: grid; gap: 10px; }
+  .field { height: 30px; border-radius: 9px; background: #262930; }
+  .play { height: 46px; border-radius: 12px; background: var(--accent); display: grid; place-items: center; font-weight: 700; color: #fff; }
+  .stats { background: #22252B; border-radius: 12px; padding: 10px; }
+  .bars { display: flex; align-items: flex-end; gap: 6px; height: 56px; margin-top: 8px; }
+  .bars i { flex: 1; border-radius: 4px; background: rgba(255,122,92,.45); }
+  .bars i:last-child { background: var(--accent); }
+  .mini { font-size: 12px; color: var(--muted); }
+
+  section { padding: 56px 0; }
+  h2 { font-size: clamp(28px, 3.4vw, 38px); margin: 0 0 10px; letter-spacing: -.01em; }
+  .sub { color: var(--muted); margin: 0 0 30px; max-width: 640px; }
+
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; }
+  .card .ic { width: 40px; height: 40px; border-radius: 12px; background: #2B2420; display: grid; place-items: center; font-size: 20px; margin-bottom: 14px; }
+  .card h3 { margin: 0 0 6px; font-size: 17px; }
+  .card p { margin: 0; color: var(--muted); font-size: 14.5px; }
+
+  .drivers { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .drv { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+  .drv b { display: block; }
+  .drv span { color: var(--muted); font-size: 14px; }
+  .note { margin-top: 14px; padding: 14px 16px; border-radius: 14px; background: #16231B; border: 1px solid #234A30; color: #B7E8C6; font-size: 14.5px; }
+
+  .steps { counter-reset: s; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .step { position: relative; padding-top: 52px; }
+  .step::before { counter-increment: s; content: counter(s); position: absolute; top: 18px; left: 20px; width: 26px; height: 26px; border-radius: 8px; background: var(--accent); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: 14px; }
+
+  details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin-bottom: 10px; }
+  summary { cursor: pointer; font-weight: 600; }
+  details p { color: var(--muted); margin: 10px 0 0; }
+
+  .final { text-align: center; background: linear-gradient(180deg, #1D1714, #17191D); border: 1px solid var(--line); border-radius: 26px; padding: 48px 20px; }
+
+  footer { border-top: 1px solid var(--line); padding: 26px 0 40px; color: var(--muted); font-size: 13.5px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding-top: 44px; }
+    .grid, .steps { grid-template-columns: 1fr 1fr; }
+    .drivers { grid-template-columns: 1fr; }
+    nav { display: none; }
+  }
+  @media (max-width: 540px) {
+    .grid, .steps { grid-template-columns: 1fr; }
+    .mock-body { grid-template-columns: 1fr; }
+    .side { display: none; }
+    .drv { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#"><span class="logo">+</span>Roblox Launcher+</a>
+    <nav>
+      <a href="#features">Возможности</a>
+      <a href="#drivers">Драйверы</a>
+      <a href="#install">Установка</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <a class="btn btn-main" href="https://rlp-mail.robloxlauncherplus.workers.dev/download" style="padding:9px 16px;font-size:15px">Скачать</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <span class="tag">Бесплатно · Windows 10 и 11</span>
+      <h1>Roblox, но <span>удобнее</span></h1>
+      <p class="lead">Лаунчер для Roblox: несколько аккаунтов в один клик, моды и темы, больше FPS, статистика игры и защита входа.</p>
+      <div class="cta">
+        <a class="btn btn-main" href="https://rlp-mail.robloxlauncherplus.workers.dev/download">⬇&nbsp; Скачать для Windows</a>
+        <a class="btn btn-ghost" href="https://t.me/roblox_Launcher_plus_bot" target="_blank" rel="noopener">Поддержка в Telegram</a>
+      </div>
+      <div class="meta" id="ver">Последняя версия · Windows 64-бит</div>
+    </div>
+    <div class="mock" aria-hidden="true">
+      <div class="mock-top"><span class="logo">+</span>Roblox Launcher+</div>
+      <div class="mock-body">
+        <div class="side">
+          <div class="on">▶ Играть</div><div>🧩 Моды</div><div>⚑ FastFlags</div><div>🛠 Инструменты</div><div>⚙ Настройки</div>
+        </div>
+        <div class="pane">
+          <div class="mini">Аккаунт</div><div class="field"></div>
+          <div class="play">▶ Играть</div>
+          <div class="stats"><div class="mini">Время в Roblox · за 7 дней</div>
+            <div class="bars"><i style="height:22%"></i><i style="height:12%"></i><i style="height:45%"></i><i style="height:30%"></i><i style="height:52%"></i><i style="height:88%"></i><i style="height:64%"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="features">
+    <h2>Что умеет</h2>
+    <p class="sub">Всё, чего не хватает обычному Roblox, — в одном окне.</p>
+    <div class="grid">
+      <div class="card"><div class="ic">👥</div><h3>Несколько аккаунтов</h3><p>Входите один раз и переключайтесь в один клик. Можно играть в нескольких окнах сразу.</p></div>
+      <div class="card"><div class="ic">🎨</div><h3>Моды и темы</h3><p>Цвет неба, курсор, прицел, шрифт и готовые темы — Хэллоуин, Неон, Сакура и другие.</p></div>
+      <div class="card"><div class="ic">⚡</div><h3>Больше FPS</h3><p>Буст до 240 FPS, повышенный приоритет Roblox и режим «Высокая производительность».</p></div>
+      <div class="card"><div class="ic">🎛</div><h3>FastFlags</h3><p>Настройки графики с понятными пояснениями: тени, трава, текстуры, графический движок.</p></div>
+      <div class="card"><div class="ic">📈</div><h3>Статистика</h3><p>Сколько вы играете сегодня и за неделю — по каждому аккаунту.</p></div>
+      <div class="card"><div class="ic">🔒</div><h3>Защита входа</h3><p>Код на почту при открытии лаунчера и оповещения о входе. Аккаунты хранятся зашифрованными.</p></div>
+      <div class="card"><div class="ic">🔄</div><h3>Сам обновляется</h3><p>Новые версии лаунчера и Roblox ставятся сами — без переустановки.</p></div>
+      <div class="card"><div class="ic">💬</div><h3>Поддержка</h3><p>Кнопка «Техподдержка» прямо в лаунчере и бот в Telegram — отвечает живой человек.</p></div>
+    </div>
+  </section>
+
+  <section id="drivers">
+    <h2>Драйверы для Roblox</h2>
+    <p class="sub">Чтобы Roblox не тормозил и не вылетал, нужен свежий драйвер видеокарты и компонент WebView2. Скачивайте только с официальных сайтов — ниже прямые ссылки.</p>
+    <div class="drivers">
+      <div class="card drv"><div><b>NVIDIA GeForce</b><span>Драйверы для видеокарт NVIDIA</span></div><a class="btn btn-ghost" href="https://www.nvidia.com/ru-ru/drivers/" target="_blank" rel="noopener">Скачать</a></div>
+      <div class="card drv"><div><b>AMD Radeon</b><span>Драйверы для видеокарт и процессоров AMD</span></div><a class="btn btn-ghost" href="https://www.amd.com/ru/support/download/drivers.html" target="_blank" rel="noopener">Скачать</a></div>
+      <div class="card drv"><div><b>Intel Graphics</b><span>Помощник Intel сам найдёт нужный драйвер</span></div><a class="btn btn-ghost" href="https://www.intel.com/content/www/us/en/support/detect.html" target="_blank" rel="noopener">Скачать</a></div>
+      <div class="card drv"><div><b>Microsoft WebView2</b><span>Нужен для окна входа в Roblox (в Windows 11 уже есть)</span></div><a class="btn btn-ghost" href="https://developer.microsoft.com/microsoft-edge/webview2/" target="_blank" rel="noopener">Скачать</a></div>
+    </div>
+    <div class="note">✓ Лаунчер проверяет это сам: если драйвера нет или он сильно устарел, он подскажет и откроет нужную страницу. Подробности — во вкладке «Инструменты» → «Драйверы и компоненты».</div>
+  </section>
+
+  <section id="install">
+    <h2>Установка за минуту</h2>
+    <p class="sub">Никаких установщиков — один файл.</p>
+    <div class="steps">
+      <div class="card step"><h3>Скачайте</h3><p>Нажмите «Скачать для Windows» — загрузится «Roblox Launcher+.exe».</p></div>
+      <div class="card step"><h3>Запустите</h3><p>Если Windows покажет «Защитник Windows предотвратил запуск», нажмите «Подробнее» → «Выполнить в любом случае».</p></div>
+      <div class="card step"><h3>Разрешите</h3><p>Лаунчер попросит права администратора — они нужны для ускорения Roblox. Это можно выключить в настройках.</p></div>
+      <div class="card step"><h3>Играйте</h3><p>Войдите в свой аккаунт Roblox и нажмите «Играть».</p></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Вопросы</h2>
+    <details><summary>Это безопасно для аккаунта?</summary><p>Вход идёт через официальную страницу Roblox. Лаунчер не меняет файлы игры для читов и ничего не встраивает в Roblox — моды меняют только оформление. Данные аккаунтов хранятся зашифрованными.</p></details>
+    <details><summary>Почему Windows предупреждает о файле?</summary><p>У лаунчера нет платной цифровой подписи, поэтому фильтр SmartScreen не знает этот файл. Нажмите «Подробнее» → «Выполнить в любом случае».</p></details>
+    <details><summary>Зачем права администратора?</summary><p>Чтобы поднять приоритет Roblox и включить режим «Высокая производительность». Если не хотите — снимите галочку «Запускать от имени администратора» в «Настройках».</p></details>
+    <details><summary>Roblox тормозит или вылетает</summary><p>Обновите драйвер видеокарты (ссылки выше) и включите «Буст» на вкладке «Играть». Не помогло — напишите в Telegram-поддержку.</p></details>
+    <details><summary>Сколько стоит?</summary><p>Нисколько. Лаунчер бесплатный.</p></details>
+  </section>
+
+  <section>
+    <div class="final">
+      <h2>Готовы играть?</h2>
+      <p class="sub" style="margin:0 auto 26px">Скачайте Roblox Launcher+ и войдите в свой аккаунт — это займёт минуту.</p>
+      <a class="btn btn-main" href="https://rlp-mail.robloxlauncherplus.workers.dev/download">⬇&nbsp; Скачать для Windows</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Roblox Launcher+ — неофициальный проект, не связан с Roblox Corporation. Roblox — товарный знак Roblox Corporation.</span>
+    <a href="https://t.me/roblox_Launcher_plus_bot" target="_blank" rel="noopener">Поддержка в Telegram</a>
+  </div>
+</footer>
+
+<script>
+  // номер последней версии и размер файла — с того же сервера, откуда идёт скачивание
+  fetch('https://rlp-mail.robloxlauncherplus.workers.dev/v1/latest').then(function (r) { return r.json(); }).then(function (d) {
+    if (!d || !d.version) return;
+    var mb = d.size ? ' · ' + Math.round(d.size / 1048576) + ' МБ' : '';
+    document.getElementById('ver').textContent = 'Версия ' + d.version + mb + ' · Windows 64-бит';
+  }).catch(function () {});
+</script>
+</body>
+</html>
